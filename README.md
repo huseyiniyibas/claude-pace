@@ -82,19 +82,21 @@ A few seconds later the bar fills in. Until then it shows `Pace …`. If somethi
 
 ## Reading the bar
 
-A segment in the bar looks like this:
+A segment in the bar looks like this, here with every detail switched on (time to limit is off by default):
 
 ```text
-Session 77% - 3h 49m left | Slow down
-└──┬──┘ └┬─┘   └───┬────┘   └───┬───┘
- name  percent  time left    pace keyword
+Session 77% - 3h 49m left - limit in 21m | Slow down
+└──┬──┘ └┬┘   └────┬────┘   └─────┬────┘   └───┬───┘
+ name percent  time left    time to limit pace keyword
 ```
 
 - **Session** is the 5-hour window. **Total** is the 7-day window.
 - **Percentage** is how much of that limit you have used.
 - **Time left** is how long until that window resets.
+- **Time to limit** is how long until you would hit the limit if you keep going at this pace. It only appears while you are on course to hit the limit before the window resets, and it is off by default.
 - **Pace keyword** says what your current rate means for the rest of the window.
-- Optionally, **time to limit** sits after the time left: `Session 77% - 3h 49m left - limit in 21m | Slow down`.
+
+Each of these can be switched on or off for each window; see [Customizing the bar](#customizing-the-bar).
 
 Both windows are drawn side by side, each with its own keyword, because the two limits are independent: you can be running hot on the session and have plenty of the week left.
 
