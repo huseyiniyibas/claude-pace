@@ -90,9 +90,11 @@ public struct OAuthLimitsProvider: LimitsProvider {
     private let session: URLSession
     private let endpoint: URL
 
+    /// The default session is ephemeral: the shared one keeps a disk cache, which
+    /// would store the request, `Authorization` header included.
     public init(
         sources: [any CredentialSource] = [KeychainCredentialSource(), FileCredentialSource()],
-        session: URLSession = .shared,
+        session: URLSession = URLSession(configuration: .ephemeral),
         endpoint: URL = URL(string: "https://api.anthropic.com/api/oauth/usage")!
     ) {
         self.sources = sources
